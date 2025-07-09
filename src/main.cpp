@@ -4,7 +4,8 @@
 #define RELAY2 PA1
 #define SWITCH1 PB12
 #define SWITCH1GROUND PB13
-#define TOSTARTSWITCH PB14
+#define TOSTARTSWITCH PA11
+#define TOSTARTSWITCHGROUND PA12
 
 
 
@@ -19,11 +20,13 @@ void buttonInit()
 {
     pinMode(LED_BUILTIN, OUTPUT);
     pinMode(TOSTARTSWITCH, INPUT_PULLUP);
+    pinMode(TOSTARTSWITCHGROUND, OUTPUT);
     pinMode(RELAY1, OUTPUT);
     pinMode(RELAY2, OUTPUT);
     pinMode(SWITCH1, INPUT_PULLUP);
     pinMode(SWITCH1GROUND, OUTPUT);
     digitalWrite(SWITCH1GROUND, LOW);
+    digitalWrite(TOSTARTSWITCHGROUND, LOW);
     button.attachPress([]() 
     {
         if (buttonState == LOW)
